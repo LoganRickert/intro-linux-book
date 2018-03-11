@@ -1,7 +1,21 @@
 <section data-type="chapter">
 
-  <h1>Introduction To Linux</h1>
+  <h1>Navigating The Filesystem</h1>
 
-  <p>This is a chapter written in HTML</p>
+  <p>Navigating the filesystem in Linux can seem frustrating and tedious at first but with a little bit of practice it will become seemingly amazing.</p>
+
+  <h2>Linux Verses Windows Naming Differences</h2>
+
+  <p>Before talking about any commands, it's important to breifly touch on the differences between the Linux and Windows file structure. In Windows, it's common to see paths starting with <span class="code-inline">C:\</span>. Windows assigns a different letter to each drive. In figure 1, there are 4 drives, so 4 letters are listed.</p>
+
+  <div class="img-figure"><img src="ch2-windowsfiles.jpg"><div>Figure 1. My Windows filesystems has a C drive, D drive, E drive and G drive.</div></div>
+
+  <p>If I navigate to <span class="code-inline">G:\npm\introlinux</span> in the explorer, a list of files in that directory are shown. The files can be seen in figure 2. Navigating around the file system in a Linux terminal is very simliar, except that clicking with the mouse isn't available.</p>
+
+  <div class="img-figure"><img src="ch2-windowsnpmlist.jpg"><div>Figure 2. The contents of G:\npm\introlinux on my Windows computer.</div></div>
+
+  <p>In Linux, everything starts with a <span class="code-inline">/</span> and doesn't have a concept of 'drives'. My home directory on Linux is: <span class="code-inline">/home/logan</span>. In contrast, my home directory on Windows is: <span class="code-inline">C:\Users\Logan</span>.</p>
+
+  <p>It's important to point out two important vocabular terms that you probably know but have never really thought about: <span class="code-inline">File</span> and <span class="code-inline">Folder</span>. A <span class="code-inline">File</span> contains information and a <span class="code-inline">Folder</span> contains a list of filenames and folders. If you look back at Figure 2, the listing <span class="code-inline">magicbook.json</span> is really just a pointer to a file associated with the name "magicbook.json" that contains some data. That data could be anything, from text to an application.</p>
 
 </div>

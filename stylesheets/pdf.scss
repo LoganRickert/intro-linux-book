@@ -7,3 +7,29 @@ section[data-type="chapter"] {
 nav[data-type="toc"] a[href]::after {
   content: " [Page " target-counter(attr(href), page) "]"
 }
+
+p {
+	line-height: 150%;
+}
+
+.code-inline {
+	background: #e0e0e0;
+	padding: 3px 6px;
+	margin: 0 2px;
+}
+
+.img-figure {
+	img {
+		width: 100%;
+	}
+
+	div {
+		color: #666;
+		text-align: center;
+		font-style: italic;
+		padding: 10px 0;
+		border-top: 1px solid #999;
+		margin: 10px auto 0;
+		max-width: 75%;
+	}
+}
