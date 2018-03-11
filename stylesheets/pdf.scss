@@ -33,3 +33,57 @@ p {
 		max-width: 75%;
 	}
 }
+
+.man-entry {
+	padding: 20px;
+	background: #222;
+	color: #eee;
+	border-radius: 15px;
+
+	span {
+		display: block;
+		font-size: 18px;
+	}
+
+	.man {
+		float: right;
+		padding: 10px;
+		font-size: 20px;
+		color: #aaa;
+	}
+
+	.cmd {
+		padding: 10px;
+		font-size: 20px;
+	}
+
+	.cmd-sub {
+		font-size: 16px;
+		color: #aaa;
+		padding: 10px;
+	}
+
+	.desc {
+		padding: 10px;
+	}
+
+	.flags {
+		padding: 10px;
+
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			padding: 0;
+			margin: 20px;
+		}
+
+		.code-inline {
+			background: #888;
+			color: #fff;
+		}
+	}
+}
