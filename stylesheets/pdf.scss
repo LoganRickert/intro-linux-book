@@ -1,15 +1,33 @@
 @import 'shared';
 
-section[data-type="chapter"] {
+@page { size: A5 }
+
+section[data-type="chapter"], section[data-type="toc"] {
   page-break-after: always;
+}
+
+.pagebreak {
+	page-break-before: always;
 }
 
 nav[data-type="toc"] a[href]::after {
   content: " [Page " target-counter(attr(href), page) "]"
 }
 
+* {
+	text-align: justify;
+	text-justify: inter-character;
+}
+
 p {
 	line-height: 150%;
+	font-size: 12px;
+}
+
+h1 {
+	span {
+		display: block;
+	}
 }
 
 .code-inline {
@@ -18,7 +36,7 @@ p {
 	margin: 0 2px;
 }
 
-.img-figure {
+.img-figure, .pre-figure {
 	img {
 		width: 100%;
 	}
@@ -31,6 +49,16 @@ p {
 		border-top: 1px solid #999;
 		margin: 10px auto 0;
 		max-width: 75%;
+		font-size: 12px;
+	}
+
+	pre {
+		text-align: left;
+		font-size: 10px;
+		border: 1px solid #aaa;
+		padding: 10px;
+		border-radius: 10px;
+		color: #111;
 	}
 }
 
@@ -43,6 +71,8 @@ p {
 	span {
 		display: block;
 		font-size: 18px;
+		border-bottom: 1px solid #555;
+		padding: 0 0 5px 0;
 	}
 
 	.man {
@@ -53,22 +83,22 @@ p {
 	}
 
 	.cmd {
-		padding: 10px;
+		padding: 10px 10px 0 10px;
 		font-size: 20px;
 	}
 
 	.cmd-sub {
-		font-size: 16px;
+		font-size: 12px;
 		color: #aaa;
-		padding: 10px;
+		padding: 5px 10px 10px;
 	}
 
 	.desc {
-		padding: 10px;
+		padding: 5px 10px 0 10px;
 	}
 
 	.flags {
-		padding: 10px;
+		padding: 10px 10px 0;
 
 		ul {
 			list-style-type: none;
@@ -79,6 +109,7 @@ p {
 		li {
 			padding: 0;
 			margin: 20px;
+			font-size: 12px;
 		}
 
 		.code-inline {

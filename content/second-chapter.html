@@ -1,6 +1,6 @@
 <section data-type="chapter">
 
-  <h1>Navigating The Filesystem</h1>
+  <h1><span>Chapter 2 </span>Navigating The Filesystem</h1>
 
   <p>Navigating the filesystem in Linux can seem frustrating and tedious at first but with a little bit of practice it will become seemingly amazing.</p>
 
@@ -20,21 +20,42 @@
 
   <h2>Listing Files In Linux</h2>
 
-  <p>When you start a new terminal, it automatically starts in <span class="code-inline">/home/yourusername</span>. My username on Linux is logan, so my path would look like the following: <span class="code-inline">/home/logan</span>. To list the files in our current directory, we run the command: <span class="code-inline">ls</span>.</p>
+  <p>When a new terminal is opened, it defaults to the <span class="code-inline">/home/yourusername</span> directory. My username on Linux is logan, so my path would look like the following: <span class="code-inline">/home/logan</span>. To list the files in the current directory, the following command can be ran: <span class="code-inline">ls</span>.</p>
 
   <div class="man-entry">
   	<div class="man">Manual #2.1</div>
   	<div class="cmd">LS</div>
   	<div class="cmd-sub">Command</div>
   	<div class="desc"><span>Description</span><p>List  information  about  the FILEs (the current directory by default).</p></div>
-	<div class="flags"><span>Common Flags</span>
-		<ul>
-			<li>l - List extended information about the file</li>
-			<li>a - List all files, including hidden files (files starting with a .</li>
-			<li>h - Show the size of the files in a human readable format.</li>
-			<li>t - Sort by time last modified with the newest file being first.</li>
-		</ul>
-	</div>
+  	<div class="flags"><span>Common Flags</span>
+  		<ul>
+  			<li>l - List extended information about the file</li>
+  			<li>a - List all files, including hidden files (files starting with a .</li>
+  			<li>h - Show the size of the files in a human readable format.</li>
+  			<li>t - Sort by time last modified with the newest file being first.</li>
+  		</ul>
+  	</div>
   </div>
+
+  <p>The output from the command is shown in the top part of figure 3. Each item in the list is either a file or a directory. It can be hard to tell which is a file and which is a directory. By adding the <span class="code-inline">-l</span> flag, as seen in the middle part of figure 3, the command will print out information about each entry. The <span class="code-inline">d</span> at the start of the listings indicate whether or not the entry is a file or a folder. In this case, <span class="code-inline">layouts</span> and <span class="code-inline">stylesheets</span> are both folders, while <span class="code-inline">magicbook.json</span>  is a file. Often you'll want to list the contents of a directory without having to change your default directory. You can do this by adding the name of the directory after the flag (if one is present).</p>
+
+  <div class="pre-figure">
+    <pre>logan:~$ ls
+build   fonts   includes  layouts   stylesheets
+content   images    javascripts magicbook.json
+logan:~$ ls -l
+drwxr-xr-x  4 logan  logan  128 Mar 12 16:21 layouts
+-rw-r--r--  1 logan  logan  569 Mar 12 16:21 magicbook.json
+drwxr-xr-x  5 logan  logan  160 Mar 12 16:21 stylesheets
+logan:~$ ls -l layouts/
+total 16
+-rw-r--r--  1 logan  logan  290 Mar 12 16:21 html.html
+-rw-r--r--  1 logan  logan  213 Mar 12 16:21 pdf.html</pre>
+    <div>Figure 3. Example output from ls command.</div>
+  </div>
+
+  <h2>Changing Directories</h2>
+
+  <p>Being able to move around the filesystem is important. 
 
 </div>
