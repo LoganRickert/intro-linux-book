@@ -6,17 +6,17 @@
 
   <h2>Linux Verses Windows Naming Differences</h2>
 
-  <p>Before talking about any commands, it's important to breifly touch on the differences between the Linux and Windows file structure. In Windows, it's common to see paths starting with <span class="code-inline">C:\</span>. Windows assigns a different letter to each drive. In figure 1, there are 4 drives, so 4 letters are listed.</p>
+  <p>Before talking about any commands, it's important to breifly touch on the differences between the Linux and Windows file structure. In Windows, it's common to see paths starting with <span class="code-inline">C:\</span>. Windows assigns a different letter to each drive. In figure 2.1, there are 4 drives, so 4 letters are listed.</p>
 
-  <div class="img-figure"><img src="ch2-windowsfiles.jpg"><div>Figure 1. My Windows filesystems has a C drive, D drive, E drive and G drive.</div></div>
+  <div class="img-figure"><img src="ch2-windowsfiles.jpg"><div>Figure 2.1. My Windows filesystems has a C drive, D drive, E drive and G drive.</div></div>
 
-  <p>If I navigate to <span class="code-inline">G:\npm\introlinux</span> in the explorer, a list of files in that directory are shown. The files can be seen in figure 2. Navigating around the file system in a Linux terminal is very simliar, except that clicking with the mouse isn't available.</p>
+  <p>If I navigate to <span class="code-inline">G:\npm\introlinux</span> in the explorer, a list of files in that directory are shown. The files can be seen in figure 2.2. Navigating around the file system in a Linux terminal is very simliar, except that clicking with the mouse isn't available.</p>
 
-  <div class="img-figure"><img src="ch2-windowsnpmlist.jpg"><div>Figure 2. The contents of G:\npm\introlinux on my Windows computer.</div></div>
+  <div class="img-figure"><img src="ch2-windowsnpmlist.jpg"><div>Figure 2.2. The contents of G:\npm\introlinux on my Windows computer.</div></div>
 
   <p>In Linux, everything starts with a <span class="code-inline">/</span> and doesn't have a concept of 'drives'. My home directory on Linux is: <span class="code-inline">/home/logan</span>. In contrast, my home directory on Windows is: <span class="code-inline">C:\Users\Logan</span>.</p>
 
-  <p>It's important to point out two important vocabular terms that you probably know but have never really thought about: <span class="code-inline">File</span> and <span class="code-inline">Folder</span>. A <span class="code-inline">File</span> contains information and a <span class="code-inline">Folder</span> contains a list of filenames and folders. If you look back at Figure 2, the listing <span class="code-inline">magicbook.json</span> is really just a pointer to a file associated with the name "magicbook.json" that contains some data. That data could be anything, from text to an application.</p>
+  <p>It's important to point out two important vocabular terms that you probably know but have never really thought about: <span class="code-inline">File</span> and <span class="code-inline">Folder</span>. A <span class="code-inline">File</span> contains information and a <span class="code-inline">Folder</span> contains a list of filenames and folders. If you look back at Figure 3.2, the listing <span class="code-inline">magicbook.json</span> is really just a pointer to a file associated with the name "magicbook.json" that contains some data. That data could be anything, from text to an application.</p>
 
   <h2>Listing Files In Linux</h2>
 
@@ -26,18 +26,18 @@
   	<div class="man">Manual #2.1</div>
   	<div class="cmd">LS</div>
   	<div class="cmd-sub">Command</div>
-  	<div class="desc"><span>Description</span><p>List  information  about  the FILEs (the current directory by default).</p></div>
-  	<div class="flags"><span>Common Flags</span>
+  	<div class="desc"><span class="header">Description</span><p>List  information  about  the FILEs (the current directory by default).</p></div>
+  	<div class="flags"><span class="header">Common Flags</span>
   		<ul>
-  			<li>l - List extended information about the file</li>
-  			<li>a - List all files, including hidden files (files starting with a .</li>
-  			<li>h - Show the size of the files in a human readable format.</li>
-  			<li>t - Sort by time last modified with the newest file being first.</li>
+  			<li><span>l</span> - List extended information about the file</li>
+  			<li><span>a</span> - List all files, including hidden files (files starting with a .</li>
+  			<li><span>h</span> - Show the size of the files in a human readable format.</li>
+  			<li><span>t</span> - Sort by time last modified with the newest file being first.</li>
   		</ul>
   	</div>
   </div>
 
-  <p>The output from the command is shown in the top part of figure 3. Each item in the list is either a file or a directory. It can be hard to tell which is a file and which is a directory. By adding the <span class="code-inline">-l</span> flag, as seen in the middle part of figure 3, the command will print out information about each entry. The <span class="code-inline">d</span> at the start of the listings indicate whether or not the entry is a file or a folder. In this case, <span class="code-inline">layouts</span> and <span class="code-inline">stylesheets</span> are both folders, while <span class="code-inline">magicbook.json</span>  is a file. Often you'll want to list the contents of a directory without having to change your default directory. You can do this by adding the name of the directory after the flag (if one is present). An example would be <span class="code-inline">ls -l layouts</span>, which is shown at the bottom of figure 3.</p>
+  <p>The output from the command is shown in the top part of figure 2.3. Each item in the list is either a file or a directory. It can be hard to tell which is a file and which is a directory. By adding the <span class="code-inline">-l</span> flag, as seen in the middle part of figure 3, the command will print out information about each entry. The <span class="code-inline">d</span> at the start of the listings indicate whether or not the entry is a file or a folder. In this case, <span class="code-inline">layouts</span> and <span class="code-inline">stylesheets</span> are both folders, while <span class="code-inline">magicbook.json</span>  is a file. Often you'll want to list the contents of a directory without having to change your default directory. You can do this by adding the name of the directory after the flag (if one is present). An example would be <span class="code-inline">ls -l layouts</span>, which is shown at the bottom of figure 2.3.</p>
 
   <div class="pre-figure">
     <pre>logan:~$ ls
@@ -51,7 +51,7 @@ logan:~$ ls -l layouts
 total 16
 -rw-r--r--  1 logan  logan  290 Mar 12 16:21 html.html
 -rw-r--r--  1 logan  logan  213 Mar 12 16:21 pdf.html</pre>
-    <div>Figure 3. Example output from ls command.</div>
+    <div>Figure 2.3. Example output from ls command.</div>
   </div>
 
   <h2>Changing Directories</h2>
@@ -62,9 +62,31 @@ total 16
     <div class="man">Manual #2.2</div>
     <div class="cmd">CD</div>
     <div class="cmd-sub">Command</div>
-    <div class="desc"><span>Description</span><p>Changes the current working directory. Use .. to go back up a directory.</p></div>
+    <div class="desc"><span class="header">Description</span><p>Changes the current working directory. Use .. to go back up a directory.</p></div>
   </div>
 
   <p>If you ever want to come out of a directory, you have to use the special <span class="code-inline">..</span> directory name. The two dots indicate to CD that you want to go back up 1 directory. For example if you were in the directory <span class="code-inline">includes/app/images</span> and wanted to go back to the app directory, you could do <span class="code-inline">cd ..</span>. If you wanted to go back up to the includes directory while in the images directory, you could do <span class="code-inline">cd ../..</span>.</p>
+
+  <h2>Viewing Contents of Files</h2>
+
+  <p>There are two common commands that are used when viewing files on Linux. The first is the <span class="code-inline">cat</span> command. Cat is short for concatenate and is used to print out the contents of a file to the screen. It is commonly used on configuration and text files. The cat command only has 1 required argument, the name of the file to concatenate. An example can be seen in figure 2.4.</p>
+
+  <div class="man-entry">
+    <div class="man">Manual #2.3</div>
+    <div class="cmd">CAT</div>
+    <div class="cmd-sub">Command</div>
+    <div class="desc"><span class="header">Description</span><p>Prints out the contents of a file to the screen. Unlimited number of files can be passed in.</p></div>
+  </div>
+
+  <div class="pre-figure">
+    <pre>logan:~$ cat magicbook.json
+{
+  "title" : "My Book",
+  "destination" : "build/:build",
+}</pre>
+    <div>Figure 2.4. Example output from the cat command.</div>
+  </div>
+
+  <p>The other command is <span class="code-inline">less</span>.
 
 </div>
