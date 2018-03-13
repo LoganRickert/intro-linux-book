@@ -4,7 +4,9 @@
   "files" : [
     "content/toc.html",
     "content/first-chapter.html",
-    "content/second-chapter.html"
+    "content/second-chapter.html",
+    "content/third-chapter.html",
+    "content/fourth-chapter.html"
   ],
   "builds" : [
     {
