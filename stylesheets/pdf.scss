@@ -1,6 +1,19 @@
 @import 'shared';
 
-@page { size: A5 }
+body {
+    page: main;
+    counter-reset: page 1;
+}
+
+@page { 
+	size: A5;
+}
+
+@page main {
+    @bottom {
+        content: "Page " counter(page)
+    }
+}
 
 section[data-type="chapter"], section[data-type="toc"] {
   page-break-after: always;
