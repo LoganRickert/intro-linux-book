@@ -14,9 +14,13 @@
   	<div class="man">Manual #1.1</div>
   	<div class="cmd">MAN</div>
   	<div class="cmd-sub">Command</div>
-  	<div class="desc"><span>Description</span><p>Formats and displays the on-line manual pages.</p></div>
+  	<div class="desc"><span class="header">Description</span><p>Formats and displays the on-line manual pages.</p></div>
   </div>
 
   <p>One of the nicest features about man is that it displays the arguments and flags for a command with a description for each. An argument is extra information you pass to a command, such as the name of a file. A flag is an option that you want to enable or disable with the command, such as reversing the order of the output.</p>
+
+  <p>Man pages can sometimes be very long. In order to keep them simple to use, it employs the use of the <span class="code-inline">less</span> command automatically. When you run the command, only a small part of the entire page is shown. The up and down arrow keys can be used to scroll up and down and q can be used to stop viewing the man page. You can also highlight and search through the man page by typing a <span class="code-inline">/</span>, typing your search term, and pressing enter.</p>
+
+  <p>Man pages can also be viewed online. Just search the command you would have entered and the man page will come up.</p>
 
 </div>
