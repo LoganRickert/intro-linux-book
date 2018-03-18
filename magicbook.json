@@ -6,7 +6,8 @@
     "content/first-chapter.html",
     "content/second-chapter.html",
     "content/third-chapter.html",
-    "content/fourth-chapter.html"
+    "content/fourth-chapter.html",
+    "content/fifth-chapter.html"
   ],
   "builds" : [
     {
