@@ -1,42 +1,66 @@
 
 <section data-type="chapter">
 
-  <h1><span>Chapter 3 </span>Analysing Binary Files</h1>
+  <h1><span>Chapter 3 </span>Searching The Filesystem And Blocks Of Texts</h1>
 
-  <h2>strings</h2>
+  <h2>Find</h2>
+
+  <p>Find is a great tool to quick search through a large amount of files. Find is provided a directory and the partial name of the files you are looking for. If you want to search for files in the current directory, you can just provide a <span class="code-inline">.</span> as the folder path. Find prints out the path to the file relative to the path passed in. If only part of the filename is known, the unknown part can be replaced with an <span class="code-inline">*</span>. You can view a few examples in figure 3.1.</p>
 
   <div class="man-entry">
     <div class="man">Manual #3.1</div>
-    <div class="cmd">STRINGS</div>
+    <div class="cmd">FIND</div>
     <div class="cmd-sub">Command</div>
-    <div class="desc"><span class="header">Description</span><p>Finds the printable strings in an object or binary file.</p></div>
+    <div class="desc"><span class="header">Description</span><p>Iterates through a folder looking for files that match a specific pattern.</p></div>
+    <div class="flags"><span class="header">Common Flags</span>
+      <ul>
+        <li><span>-name [filename]</span> - Limits search to only files matching this name.</li>
+        <li><span>-iname [filename]</span> - Limits search to only files matching this name, case-insensitive.</li>
+        <li><span>-not</span> - Finds files that don't match -name pattern..</li>
+        <li><span>-type [f | d]</span> - Limits search to just Files or Directories.</li>
+      </ul>
+    </div>
   </div>
 
-  <h2>ltrace</h2>
+  <p>The first example is searching for any files ending in ".html" in the current directory. The second example finds any files with the name "chapter" in the name inside of the build directory. The last example searches for any file that does not end with ".svg" in the fonts folder.</p>
+
+  <div class="pre-figure">
+    <pre>logan:~$ find . -name "*.html"
+./includes/toc.html
+./includes/navigation.html
+./content/toc.html
+./content/second-chapter.html
+./layouts/html.html
+logan:~$ find build -name "*chapter*"
+build/build2/fifth-chapter.html
+build/build2/first-chapter.html
+build/build2/third-chapter.html
+build/build2/fourth-chapter.html
+build/build2/second-chapter.html
+logan:~$ find fonts -not -name "*.svg"
+fonts
+fonts/Roboto-Bold.eot
+fonts/Roboto-Bold.woff
+fonts/Roboto-Bold.ttf</pre>
+    <div>Figure 3.1. A few find examples.</div>
+  </div>
+
+  <h2>Grep</h2>
+
+  <p>Grep allows for </p>
 
   <div class="man-entry">
     <div class="man">Manual #3.2</div>
-    <div class="cmd">LTRACE</div>
+    <div class="cmd">Grep</div>
     <div class="cmd-sub">Command</div>
-    <div class="desc"><span class="header">Description</span><p>Runs the specified program until it exits. It intercepts and records the dynamic library calls which are called by the executed process and the signals which are received by that process.</p></div>
+    <div class="desc"><span class="header">Description</span><p>Searches through standard output and finds string that match a given pattern.</p></div>
+    <div class="flags"><span class="header">Common Flags</span>
+      <ul>
+        <li><span>-i</span> - Case-insensitive</li>
+        <li><span>-w</span> - Pattern is an entire word, IE: "is" matches "is", but not "wise".</li>
+        <li><span>-v</span> - Matches the opposite of the pattern.</li>
+        <li><span>-n</span> - Shows the line number where the pattern was matched.</li>
+      </ul>
+    </div>
   </div>
-  
-  <h2>strace</h2>
-
-  <div class="man-entry">
-    <div class="man">Manual #3.3</div>
-    <div class="cmd">STRACE</div>
-    <div class="cmd-sub">Command</div>
-    <div class="desc"><span class="header">Description</span><p>Runs the specified program until it exits. It intercepts and records the system calls which are called by a process and the signals which are received by a process.</p></div>
-  </div>
-
-  <h2>dd</h2>
-
-  <div class="man-entry">
-    <div class="man">Manual #3.4</div>
-    <div class="cmd">FILE</div>
-    <div class="cmd-sub">Command</div>
-    <div class="desc"><span class="header">Description</span><p>A utility to convert and copy files. Input data is read and written in 512-byte blocks.</p></div>
-  </div>
-
 </section>
