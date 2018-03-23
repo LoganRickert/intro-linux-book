@@ -1,28 +1,31 @@
-```<section data-type="chapter">
+<section data-type="chapter">
 
   <h1><span>Chapter 5 </span>Networking Tools</h1>
 
-  <p>We will deal with the lower layers of the networking stack. The transport layer, network layer, data link layer, and physical layer are all needed in order to use the internet. The <b>Transport Layer</b> splits up longer messages into multiple, smaller messages. The <b>Network Layer</b> contains information about where the traffic should go. The <b>Data Link Layer</b> is the infrustructure to figure out how to handle the traffic that is coming in and out. The <b>Physical Layer</b> are the physical connections, such as ethernet cables.</p>
+  <p>We will deal with the lower layers of the networking stack. The transport layer, network layer, data link layer, and physical layer are all needed in order to use the internet. The <b>Transport Layer</b> splits up longer messages into multiple, smaller messages. The <b>Network Layer</b> contains information about where the traffic should go. The <b>Data Link Layer</b> is the infrastructure to figure out how to handle the traffic that is coming in and out. The <b>Physical Layer</b> is the physical connections, such as ethernet cables.</p>
 
-  <h2>nmap</h2>
+  <h2>Scanning A Network</h2>
+
+  <p>The command nmap scans a network and retrieves information about the machines on that may be running on it.  To find out what machines are on a subnet, for example, you can run the command: <span class="code-inline">nmap -sn 192.168.1.1-255</span>. To quickly scan a single machine, you can run: <span class="code-inline">nmap -A 192.168.1.1</span>. To figure out what services might be running on a given machine, run the command: <span class="code-inline">nmap -sV -p 0-1500 192.168.1.1</span>.</p>
 
   <div class="man-entry">
-      <div class="man">Manual #5.1</div>
-      <div class="cmd">NMAP</div>
-      <div class="cmd-sub">Command</div>
-      <div class="desc"><span class="header">Description</span><p>Scans devices connected to a network.</p></div>
-      <div class="flags"><span class="header">Common Flags</span>
-          <ul>
-              <li><span>-p X-Y</span> - specifys to scan from port X to Y</li>
-              <li><span>-sV</span> - tells you what services are running on the system, takes longer</li>
-              <li><span>-A</span> - quick good default scan of 1000 most common ports</li>
-              <li><span>-sn</span> - no port scan, faster and only host discovery</li>
-          </ul>
-      </div>
-  </div>
-   <p>Nmap is used to map out a network and get information about the machines on it.  Find out who is on a subnet for example run<span class="code-inline">nmap -sn 192.168.1.1-255</span>.  To quickly scan a single machine run run<span class="code-inline">nmap -A 192.168.1.1</span>.  To figure out what services might be running run run<span class="code-inline">nmap -sV -p 0-1500 192.168.1.1</span>.</p>
+	  <div class="man">Manual #5.1</div>
+	  <div class="cmd">NMAP</div>
+	  <div class="cmd-sub">Command</div>
+	  <div class="desc"><span class="header">Description</span><p>Scans devices connected to a network.</p></div>
+	  <div class="flags"><span class="header">Common Flags</span>
+	      <ul>
+	          <li><span>-p X-Y</span> - Specifys to scan from port X to Y</li>
+	          <li><span>-sV</span> - Reports the services that are running on a system, (takes longer)</li>
+	          <li><span>-A</span> - Quick scan of the 1,000 most common ports</li>
+	          <li><span>-sn</span> - No port scan and only host discovery (very quick)</li>
+	      </ul>
+	  </div>
+	</div>
 
-  <h2>ssh</h2>
+  <h2>Connecting To Remote Server</h2>
+
+  <p>SSH is used when trying to connect to a remote computer. It provides a way to log into the machine and execute commands through a terminal. A lot of the time, the authentication for the connection will be with a username and a password. Using this type of authentication method, the command will be: <span class="code-inline">ssh user@host</span>. Once you run the command, it will prompt you for a password. It's also possible to connect through what is called an ssh key. This eliminates the need for needing to know the password and is generally regarded as a lot more secure authentication. To sign in this way, you first need to save the key as a file (in the case of the following command, it's named "key") and log in by doing: <span class="code-inline">ssh -i key user@host</span>. Before you can log into a computer through an ssh key, you must first generate one on the computer you are trying to connect to. The command to do so is: <span class="code-inline">ssh-keygen</span>. This generates a public-private key pair. The private key(id_rsa) stays on your system, while the public key(id_rsa.pub) goes on the remote system. This transfer can be made easy by just running: <span class="code-inline">ssh-copy-id -i ~/.ssh/id_rsa.pub user@host</span>.</p>
 
   <div class="man-entry">
       <div class="man">Manual #5.2</div>
@@ -38,29 +41,26 @@
           </ul>
       </div>
   </div>
-  <p>SSH is used to access a remote system. often it will just be a username and password, signing in looks like this <span class="code-inline">ssh user@host</span>  Often times you will need to use a key to sign in <span class="code-inline">ssh -i key user@host</span> Even if you have a password generating a key can make signing in faster and more secure, this is done with <span class="code-inline">ssh-keygen</span>. this generates a public private key pair.  The private key(id_rsa) stays on your system, while the public key(id_rsa.pub) goes on the remote system, this is done with <span class="code-inline">ssh-copy-id -i ~/.ssh/id_rsa.pub user@host</span>.</p>
 
+  <h2>Viewing Incoming and Outgoing Traffic</h2>
 
-  <h2>tcpdump</h2>
-  
+  <p>Tcpdump is used to show all incoming and outgoing network traffic. To see all web traffic run <span class="code-inline">tcpdump -q</span>. An example can be seen in figure 5.3. If you run the command without a -q, it will print out a lot more detail but  makes it a lot harder to read. If you do -A, it will interrept the data so it looks like actual text instead of gibberish. <span class="code-inline">tcpdump -A -c 5</span>.</p>
+
   <div class="man-entry">
       <div class="man">Manual #5.3</div>
       <div class="cmd">TCPDUMP</div>
       <div class="cmd-sub">Command</div>
-      <div class="desc"><span class="header">Description</span><p>Capture and present network traffic</p></div>
+      <div class="desc"><span class="header">Description</span><p>Captures and displays network traffic</p></div>
       <div class="flags"><span class="header">Common Flags</span>
           <ul>
-              <li><span>-A</span> - Print out packet contents in ASCII (readable text)</li>
-              <li><span>-q</span> - (q)uick output, prints Print less protocol information so output lines are shorter.</li>
+              <li><span>-A</span> - Prints out the contents of packets in ASCII (readable text)</li>
+              <li><span>-q</span> - quick output, prints less protocol information so output lines are shorter.</li>
               <li><span>-c [X]</span> - captures until X packets have been printed</li>
-              <li><span>-w [filename]</span> - (w)rite captured packets to [filename].</li>
-              <li><span>-r [filename]</span> - (r)ead captured packets from	 [filename].</li>
+              <li><span>-w [filename]</span> - write captured packets to [filename].</li>
+              <li><span>-r [filename]</span> - read captured packets from [filename].</li>
           </ul>
       </div>
   </div>
-    <p>Tcpdump is used to show all incomming and outgoing network traffic, to see all web traffic run <span class="code-inline">tcpdump -q</span> like in figure 5.3.  if you run without -q you will et a lot more detail but that comes at the expense of being able to read through all of it, but if you do, -A allows you to see the payload in ascii, which converts the bytes of data into a readable format, sometimes giberish, but on rare occasion insitful information can be found <span class="code-inline">tcpdump -A -c 5</span>. </p>
-
-
 
    <div class="pre-figure">
     <pre>logan:~$ tcpdump -q -c 5
@@ -93,69 +93,66 @@ E..J.)@.@...
 .............250.255.255.239.in-addr.arpa.....
 11:43:36.310009 IP 10.1.90.141.50621 > ns1.wright.edu.domain: 50092+ PTR? 250.255.255.239.in-addr.arpa. (46)
 E..J..@.@.8.
-.Z..l.....5.6.U.............250.255.255.239.in-addr.arpa.....
+.Z..l.....5.6.U..250.255.255.239.in-addr.arpa.....
 11:43:36.312851 IP ns1.wright.edu.domain > 10.1.90.141.50621: 50092 NXDomain 0/1/0 (103)
 E.......>....l..
-.Z..5...o...............250.255.255.239.in-addr.arpa................-.sns.dns.icann.org..noc.>xHo\... .....	:.....
+.Z..5...o..250.255.255.239.in-addr.arpa. .-.sns.dns.icann.org..noc.>xHo\... .....	:.....
 11:43:36.312895 IP ns2.wright.edu.domain > 10.1.90.141.50621: 50092 NXDomain 0/1/0 (103)
 E...;>..<..i.l..
-.Z..5...o!..............250.255.255.239.in-addr.arpa................-.sns.dns.icann.org..noc.>xHo\... .....	:.....
+.Z..5...o!..250.255.255.239.in-addr.arpa. .-.sns.dns.icann.org..noc.>xHo\... .....	:.....
 5 packets captured
 11 packets received by filter
 2 packets dropped by kernel
-
 </pre>
-    <div>Figure 5.3. tcpdump using -q vs -A.</div>
+    <div>Figure 5.1. tcpdump using -q vs -A.</div>
  </div>
-    <h2>nc</h2>
-  
+    <h2>Listening and Writing to Connections</h2>
+
+	<p>Netcat is used to talk and listen directly to a port. An example command to listen to a webserver on a local machine would be: <span class="code-inline">nc -l localhost 80</span>. The output to this command can be seen in figure 5.2. To talk back to a port, leave off the -l flag. <span class="code-inline">nc 192.168.1.1 80</span>.</p>
+
   <div class="man-entry">
       <div class="man">Manual #5.4</div>
       <div class="cmd">NETCAT</div>
       <div class="cmd-sub">Command</div>
-      <div class="desc"><span class="header">Description</span><p>arbitrary network connections and listens</p></div>
+      <div class="desc"><span class="header">Description</span><p>Arbitrary network connections and listens</p></div>
       <div class="flags"><span class="header">Common Flags</span>
           <ul>
-              <li><span>-p [port]</span> - listen/write to port on current machine, like running nc localhost [port]</li>
-              <li><span>-l</span> - (l)isten on the specific host/port.</li>
-              <li><span>-v</span> - increase verbosity, give more info</li>
+              <li><span>-p [port]</span> - Listens or writes to this port on the target machine</li>
+              <li><span>-l</span> - listens to the specific host and port.</li>
+              <li><span>-v</span> - Provides extra information.</li>
           </ul>
       </div>
   </div>
-     <p>Netcat is used to talk/listen directly to a port, like to see an incomming webpage run <span class="code-inline">nc -l localhost 80</span> like in figure 5.4.  To talk directly to a port just leave out the -l flag like this <span class="code-inline">nc 192.168.1.1 80</span>. </p>
 
-   <div class="pre-figure">
-    <pre>logan:~$ nc -l localhost 8080
+	<div class="pre-figure">
+		<pre>logan:~$ nc -l localhost 8080
 GET / HTTP/1.1
 User-Agent: Wget/1.17.1 (linux-gnu)
 Accept: */*
 Accept-Encoding: identity
 Host: localhost:8080
-Connection: Keep-Alive
+Connection: Keep-Alive</pre>
+		<div>Figure 5.2. Example output listening to a get request on port 8080.</div>
+	</div>
 
-</pre>
-    <div>Figure 5.4. Example output listening to a get request on port 8080.</div>
- </div>
- <h2>iptables</h2>
-   <div class="man-entry">
-      <div class="man">Manual #5.5</div>
-      <div class="cmd">IPTABLES</div>
-      <div class="cmd-sub">Command</div>
-      <div class="desc"><span class="header">Description</span><p>used to set basic firewall rules, like redirecting or droping network traffic.</p></div>
-      <div class="flags"><span class="header">Common Flags</span>
-          <ul>
-              <li><span>-s [ipaddress]</span> - specify rule for ipaddress</li>
-              <li><span>-p</span> - specify protocol, usually tcp, sometimes udp</li>
-              <li><span>--destination-port</span> -specifiy a port</li>
-              <li><span>-j [ACTION]</span> - specify what to do with this traffic, usally DROP or ACCEPT</li>
-              <li><span>-t [table]</span> - specify which table to add the rules to</li>
-              <li><span>-A</span> - (A)ppend the rule to the current rules on the table</li>
-          </ul>
-      </div>
-</div>
-      <p>IPTABLES is used to manage network traffic.  For example to DROP all INPUT traffic on port 1234 use this<span class="code-inline">iptables -A INPUT -p tcp --destination-port 1234 -j DROP</span>  To specify an ipaddress, like 127.0.0.1 use -s: <span class="code-inline">iptables -A INPUT -p tcp --destination-port 1234 -s 12.0.0.1 -j DROP </span>  Sometimes you may want to just redirect traffic, this can be done with this <span class="code-inline">iptables -t nat -A OUTPUT -p tcp --dport [port] -j DNAT --to-destination [ipaddress]:[port]</span>  To save current iptables rules use  <span class="code-inline">iptables-save > iptables-config</span> which will make a file names iptables-config that has all of your iptables rules, to load a config use  <span class="code-inline">iptables-restore < iptables-config</span> </p>
+	<h2>Rerouting Network Traffic</h2>
+	<p>IPTables can be used to manage network traffic. For example, to DROP all INPUT traffic on port 1234, you could do: <span class="code-inline">iptables -A INPUT -p tcp --destination-port 1234 -j DROP</span>. To specify an IP address, like 127.0.0.1, use -s: <span class="code-inline">iptables -A INPUT -p tcp --destination-port 1234 -s 12.0.0.1 -j DROP</span>. Sometimes you may want to just redirect traffic, this can be done with this <span class="code-inline">iptables -t nat -A OUTPUT -p tcp --dport [port] -j DNAT --to-destination [ipaddress]:[port]</span>. To save current the current iptables rules, use <span class="code-inline">iptables-save &gt; iptables-config</span> which will make a file names iptables-config that has all of your iptables rules. to load a config use: <span class="code-inline">iptables-restore &lt; iptables-config</span></p>.
 
-  
-
-</section>```
+	<div class="man-entry">
+		<div class="man">Manual #5.5</div>
+		<div class="cmd">IPTABLES</div>
+		<div class="cmd-sub">Command</div>
+		<div class="desc"><span class="header">Description</span><p>Used to set basic firewall rules, like redirecting or dropping network traffic.</p></div>
+		<div class="flags"><span class="header">Common Flags</span>
+			<ul>
+				<li><span>-s [ipaddress]</span> - Specify rule for an IP address</li>
+				<li><span>-p</span> - Specify protocol, usually 'tcp' or 'udp'</li>
+				<li><span>--destination-port</span> - Specifiy a destination port</li>
+				<li><span>-j [ACTION]</span> - Specify what to do with this traffic, usually DROP or ACCEPT</li>
+				<li><span>-t [table]</span> - Specify which table to add the rules to</li>
+				<li><span>-A</span> - Append the rule to the current rules on the table</li>
+			</ul>
+		</div>
+	</div>
+</section>
 
