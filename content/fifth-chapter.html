@@ -25,7 +25,8 @@
 
   <h2>Connecting To Remote Server</h2>
 
-  <p>SSH is used when trying to connect to a remote computer. It provides a way to log into the machine and execute commands through a terminal. A lot of the time, the authentication for the connection will be with a username and a password. Using this type of authentication method, the command will be: <span class="code-inline">ssh user@host</span>. Once you run the command, it will prompt you for a password. It's also possible to connect through what is called an ssh key. This eliminates the need for needing to know the password and is generally regarded as a lot more secure authentication. To sign in this way, you first need to save the key as a file (in the case of the following command, it's named "key") and log in by doing: <span class="code-inline">ssh -i key user@host</span>. Before you can log into a computer through an ssh key, you must first generate one on the computer you are trying to connect to. The command to do so is: <span class="code-inline">ssh-keygen</span>. This generates a public-private key pair. The private key(id_rsa) stays on your system, while the public key(id_rsa.pub) goes on the remote system. This transfer can be made easy by just running: <span class="code-inline">ssh-copy-id -i ~/.ssh/id_rsa.pub user@host</span>.</p>
+  <p>SSH is used when trying to connect to a remote computer. It provides a way to log into the machine and execute commands through a terminal. A lot of the time, the authentication for the connection will be with a username and a password. Using this type of authentication method, the command will be: <span class="code-inline">ssh user@host</span>. Once you run the command, it will prompt you for a password. It's also possible to connect through what is called an ssh key. This eliminates the need for needing to know the password and is generally regarded as a lot more secure authentication. To sign in this way, you first need to save the key as a file (in the case of the following command, it's named "key") and log in by doing: <span class="code-inline">ssh -i key user@host</span>. Before you can log into a computer through an ssh key, you must first generate one on the computer you are trying to connect to. The command to do so is: <span class="code-inline">ssh-keygen</span>. This generates a public-private key pair, which is stored in your home directory. This can be accessed with <span class="code-inline">cd ~/.ssh</span>. Your keys and authorized keys used to login to your system are in the .ssh directory like seen in figure 5.1. The private key(id_rsa) stays on your system, while the public key(id_rsa.pub) goes on the remote system. This transfer can be made easy by just running: <span class="code-inline">ssh-copy-id -i ~/.ssh/id_rsa.pub user@host</span>.</p>
+
 
   <div class="man-entry">
       <div class="man">Manual #5.2</div>
@@ -41,7 +42,13 @@
           </ul>
       </div>
   </div>
-
+  <div class="pre-figure">
+    <pre>logan:~$ cd ~/.ssh
+logan:~/.ssh$ ls
+authorized_keys  id_rsa  id_rsa.pub  known_hosts
+</pre>
+    <div>Figure 5.1. Example output listening to a get request on port 8080.</div>
+  </div>
   <h2>Viewing Incoming and Outgoing Traffic</h2>
 
   <p>Tcpdump is used to show all incoming and outgoing network traffic. To see all web traffic run <span class="code-inline">tcpdump -q</span>. An example can be seen in figure 5.3. If you run the command without a -q, it will print out a lot more detail but  makes it a lot harder to read. If you do -A, it will interrept the data so it looks like actual text instead of gibberish. <span class="code-inline">tcpdump -A -c 5</span>.</p>
@@ -104,7 +111,7 @@ E...;>..<..i.l..
 11 packets received by filter
 2 packets dropped by kernel
 </pre>
-    <div>Figure 5.1. tcpdump using -q vs -A.</div>
+    <div>Figure 5.2. tcpdump using -q vs -A.</div>
  </div>
     <h2>Listening and Writing to Connections</h2>
 
@@ -112,7 +119,7 @@ E...;>..<..i.l..
 
   <div class="man-entry">
       <div class="man">Manual #5.4</div>
-      <div class="cmd">netcat</div>
+      <div class="cmd">nc</div>
       <div class="cmd-sub">Command</div>
       <div class="desc"><span class="header">Description</span><p>Arbitrary network connections and listens</p></div>
       <div class="flags"><span class="header">Common Flags</span>
@@ -132,7 +139,7 @@ Accept: */*
 Accept-Encoding: identity
 Host: localhost:8080
 Connection: Keep-Alive</pre>
-		<div>Figure 5.2. Example output listening to a get request on port 8080.</div>
+		<div>Figure 5.3. Example output listening to a get request on port 8080.</div>
 	</div>
 
 	<h2>Rerouting Network Traffic</h2>
