@@ -9,7 +9,7 @@
 
   <div class="man-entry">
     <div class="man">Manual #3.1</div>
-    <div class="cmd">FIND</div>
+    <div class="cmd">find</div>
     <div class="cmd-sub">Command</div>
     <div class="desc"><span class="header">Description</span><p>Iterates through a folder looking for files that match a specific pattern.</p></div>
     <div class="flags"><span class="header">Common Flags</span>
@@ -51,7 +51,7 @@ fonts/Roboto-Bold.ttf</pre>
 
   <div class="man-entry">
     <div class="man">Manual #3.2</div>
-    <div class="cmd">Grep</div>
+    <div class="cmd">grep</div>
     <div class="cmd-sub">Command</div>
     <div class="desc"><span class="header">Description</span><p>Searches through standard output and finds string that match a given pattern.</p></div>
     <div class="flags"><span class="header">Common Flags</span>
@@ -64,5 +64,23 @@ fonts/Roboto-Bold.ttf</pre>
     </div>
   </div>
 
-  <p></p>
+  <h2>Piping Information</h2>
+
+  <p>The output from the console can be quickly lost. There are quite a few commands that will output a LOT of information and it's very helpful to pass that output to other commands or to save it to a file. The first type of output redirection is <span class="code-inline">&gt;</span>. This will save the output to a new file and overwrite the file if it exists. This example would output the contents of testFile and save it to testFileOutput: <span class="code-inline">cat testFile > testFileOutput</span>. If you don't want the output to overwrite the file but instead to append to it, you can use two &gt; instead, for example: <span class="code-inline">cat testFile &gt;&gt; testFileOutput</span>.</p>
+
+  <div class="man-entry">
+    <div class="man">Manual #3.3</div>
+    <div class="cmd">&gt;</div>
+    <div class="cmd-sub">Command</div>
+    <div class="desc"><span class="header">Description</span><p>Saves the output to a file instead of printing it to the terminal. Use 1 &gt; to overwrite the file, use 2 to append to the end of the file.</p></div>
+  </div>
+
+  <p>You can also feed a file into a command with the <span class="code-inline">&lt;</span> operator. An example would be <span class="code-inline">cat &lt; testFile</span>. The last command that is very commonly used to redirect output is the <span class="code-inline">|</span> opreator (shift + \). The operator means to take the output from the last command and feed it into the next command instead of printing it out to the console. An example would be <span class="code-inline">cat testFile | grep today</span>.</p>
+
+  <div class="man-entry">
+    <div class="man">Manual #3.4</div>
+    <div class="cmd">|</div>
+    <div class="cmd-sub">Command</div>
+    <div class="desc"><span class="header">Description</span><p>Pipes the output from the previous command to the next command instead of outputting to the terminal.</p></div>
+  </div>
 </section>
